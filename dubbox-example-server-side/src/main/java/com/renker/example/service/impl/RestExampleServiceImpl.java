@@ -6,7 +6,6 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.renker.example.service.IRestExampleService;
 
 @Service(protocol={"rest"})
-@Transactional
 public class RestExampleServiceImpl implements IRestExampleService {
 	public String hellow(String something) {
 		StringBuffer sb = new StringBuffer("Server response:");
