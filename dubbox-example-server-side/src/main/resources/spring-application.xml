@@ -29,9 +29,9 @@
     
     <dubbo:registry address="${spring.zookeeper}"/>
     
-    <dubbo:protocol name="dubbo" port="20880" serialization="kryo" />
+    <dubbo:protocol name="dubbo" port="20880" serialization="kryo" accesslog="D:/dubbo.log"/>
     
-   	<dubbo:protocol name="rest" server="tomcat" port="9081"/>
+   	<dubbo:protocol name="rest" server="tomcat" port="9081" serialization="kryo" accesslog="D:/dubbo-rest.log"/>
     
     <dubbo:provider timeout="15000" group="example"/>
 </beans>
