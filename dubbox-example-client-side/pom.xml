@@ -23,7 +23,7 @@
 	      <exclusion>  
 	        <groupId>org.springframework</groupId>  
 	        <artifactId>spring</artifactId>  
-	      </exclusion>  
+	      </exclusion> 
 	    </exclusions>
 	</dependency>
 	
@@ -111,7 +111,7 @@
     </dependency>
     
     
-    <dependency>
+    <!-- <dependency>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>jetty</artifactId>
         <exclusions>
@@ -120,16 +120,16 @@
                 <artifactId>servlet-api</artifactId>
             </exclusion>
         </exclusions>
-    </dependency>
+    </dependency> -->
     
-    <dependency>
+    <!-- <dependency>
         <groupId>org.apache.tomcat.embed</groupId>
         <artifactId>tomcat-embed-core</artifactId>
     </dependency>
     <dependency>
         <groupId>org.apache.tomcat.embed</groupId>
         <artifactId>tomcat-embed-logging-juli</artifactId>
-    </dependency>
+    </dependency> -->
         
     <!-- rest 服务 end -->
     
@@ -166,21 +166,35 @@
 			<version>${org.apache.shiro.version}</version>
 			
 			<exclusions>
-            <exclusion>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-simple</artifactId>
-            </exclusion>
-        </exclusions>
-			
+	            <exclusion>
+	                <groupId>org.slf4j</groupId>
+	                <artifactId>slf4j-simple</artifactId>
+	            </exclusion>
+	        </exclusions>
 		</dependency>
-	
+		
+		
+		<!-- 扩展shiro对redis支持的第三方jar -->
+		<dependency>
+		    <groupId>org.crazycake</groupId>
+		    <artifactId>shiro-redis</artifactId>
+		    <version>2.4.2.1-RELEASE</version>
+		</dependency>
 	<!-- shiro -->
 	
-	<!-- <dependency>
-		<groupId>org.slf4j</groupId>
-    	<artifactId>slf4j-simple</artifactId>
-    	<scope>compile</scope>
-	</dependency> -->
+	<dependency>
+	    <groupId>org.sitemesh</groupId>
+	    <artifactId>sitemesh</artifactId>
+	    <version>3.0.1</version>
+	</dependency>
+	
+	<!--  -->
+	
+	<dependency>
+		<groupId>com.renker</groupId>
+		<artifactId>spring-boot-renker-redis-starter</artifactId>
+		<version>0.0.1</version>
+  	</dependency>
 	
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
@@ -197,5 +211,37 @@
 		<artifactId>spring-boot-configuration-processor</artifactId>
 		<optional>true</optional>
 	</dependency>
+	
+	<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+	</dependency>
+	
+	<!-- 其他web依赖 -->
+    <dependency>
+    	<groupId>javax</groupId>
+    	<artifactId>javaee-web-api</artifactId>
+    	<version>7.0</version>
+    	<scope>provided</scope>
+    </dependency>
+    
+    <dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>jstl</artifactId>
+    </dependency>
+    
+    <dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    
+    <dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>servlet-api</artifactId>
+	    <version>2.5</version>
+	</dependency>
+    
   </dependencies>
+  <packaging>war</packaging>
 </project>

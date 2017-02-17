@@ -15,6 +15,7 @@
   	<module>dubbox-example-server-side</module>
   	<module>dubbox-example-client-side</module>
   	<module>dubbox-example-server-api</module>
+  	<module>dubbox-example-manage</module>
   </modules>
   
   
@@ -125,12 +126,12 @@
 		<dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
-            <version>8.0.11</version>
+            <version>8.0.33</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-logging-juli</artifactId>
-            <version>8.0.11</version>
+            <version>8.0.33</version>
         </dependency>
 		
   	</dependencies>

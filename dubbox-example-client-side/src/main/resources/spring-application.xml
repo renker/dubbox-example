@@ -31,4 +31,7 @@
     
     <dubbo:consumer timeout="150000" retries="0" check="false" group="example" /> 
     
+    <import resource="spring-shiro.xml"/>
+    
+    <dubbo:reference id="personService" interface="com.renker.example.person.service.IPersonService" group="example"/>
 </beans>
