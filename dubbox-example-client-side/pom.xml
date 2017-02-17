@@ -132,7 +132,55 @@
     </dependency>
         
     <!-- rest 服务 end -->
+    
+    
+    <!-- shiro -->
+     
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${org.apache.shiro.version}</version>
+		</dependency>
+     
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${org.apache.shiro.version}</version>
+		</dependency>
 	
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${org.apache.shiro.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${org.apache.shiro.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.apache.shiro.tools</groupId>
+			<artifactId>shiro-tools-hasher</artifactId>
+			<version>${org.apache.shiro.version}</version>
+			
+			<exclusions>
+            <exclusion>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+            </exclusion>
+        </exclusions>
+			
+		</dependency>
+	
+	<!-- shiro -->
+	
+	<!-- <dependency>
+		<groupId>org.slf4j</groupId>
+    	<artifactId>slf4j-simple</artifactId>
+    	<scope>compile</scope>
+	</dependency> -->
 	
 	<dependency>
 		<groupId>org.springframework.boot</groupId>

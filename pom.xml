@@ -23,6 +23,7 @@
     <dubbox.example.version>0.0.1-SNAPSHOT</dubbox.example.version>
     <dubbox.version></dubbox.version>
     <cxf.version>2.6.1</cxf.version>
+    <org.apache.shiro.version>1.2.4</org.apache.shiro.version>
   </properties>
   
   <dependencyManagement>
