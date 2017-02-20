@@ -147,12 +147,6 @@
     <!-- spring boot -->
     
     <!--  -->
-    
-    <dependency>
-		<groupId>com.renker.frame</groupId>
-		<artifactId>dubbox-frame-data-mybatis</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
 	
 	<dependency>
 		<groupId>org.springframework.boot</groupId>
@@ -170,14 +164,10 @@
 		<optional>true</optional>
 	</dependency>
 	
-	<!-- <dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-jdbc</artifactId>
-	</dependency> -->
-	
+	<!-- 模块包依赖 -->
 	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-redis</artifactId>
+		<groupId>com.renker.frame</groupId>
+		<artifactId>dubbox-frame-data-mybatis</artifactId>
 	</dependency>
   </dependencies>
 </project>

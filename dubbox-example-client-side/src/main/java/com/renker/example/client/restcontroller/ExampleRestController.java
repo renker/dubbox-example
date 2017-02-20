@@ -1,10 +1,14 @@
 package com.renker.example.client.restcontroller;
 
 
+import javax.annotation.Resource;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.renker.example.client.cache.CacheService;
+import com.renker.example.client.cache.ICacheService;
 import com.renker.example.person.model.Person;
 import com.renker.example.person.service.IPersonService;
 import com.renker.example.service.IRestExampleService;
@@ -21,6 +25,9 @@ public class ExampleRestController {
 	
 	@Reference(group="example")
 	private IPersonService personService;
+	
+	@Resource
+	private ICacheService cacheService;
 	
 	@RequestMapping("hellow")
 	public String hellow(String thing){
@@ -48,5 +55,11 @@ public class ExampleRestController {
 	public String login(String account){
 		Person p = personService.login(account);
 		return p==null?"no":p.getId();
+	}
+	
+	@RequestMapping("cache/login")
+	public String cacheLogin(String account){
+		Person p = cacheService.login(account);
+		return p.getId();
 	}
 }

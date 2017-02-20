@@ -132,7 +132,20 @@
             <artifactId>tomcat-embed-logging-juli</artifactId>
             <version>8.0.33</version>
         </dependency>
+        
+        
+        <!-- 模块包依赖 -->
+		<dependency>
+			<groupId>com.renker.frame</groupId>
+			<artifactId>dubbox-frame-data-mybatis</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		
+		<dependency>
+			<groupId>com.renker.frame</groupId>
+			<artifactId>dubbox-frame-data-redis</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
   	</dependencies>
   </dependencyManagement>
   
