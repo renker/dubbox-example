@@ -9,11 +9,6 @@
   
   
   <dependencies>
-  	<dependency>
-		<groupId>com.renker</groupId>
-		<artifactId>dubbox-example-server-api</artifactId>
-	</dependency>
-	
 	<!-- dubbo start -->
 	<dependency>
 		<groupId>com.alibaba</groupId> 
@@ -238,11 +233,11 @@
 	
 	<!-- 模块包依赖 -->
 	
-	<!-- <dependency>
+	<dependency>
 		<groupId>com.renker</groupId>
-		<artifactId>spring-boot-renker-redis-starter</artifactId>
-		<version>0.0.1</version>
-  	</dependency> -->
+		<artifactId>dubbox-example-server-api</artifactId>
+	</dependency>
+	
    	<dependency>
 		<groupId>com.renker.frame</groupId>
 		<artifactId>dubbox-frame-data-redis</artifactId>
