@@ -152,6 +152,14 @@
 			<artifactId>dubbox-frame-dubbo-provider</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
+		
+		<dependency>
+			<groupId>com.renker.frame</groupId>
+			<artifactId>dubbox-frame-dubbo-customer</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
   	</dependencies>
   </dependencyManagement>
   
