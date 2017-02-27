@@ -9,8 +9,8 @@
   
   <dependencies>
   	<dependency>
-        <groupId>javax.ws.rs</groupId>
-        <artifactId>javax.ws.rs-api</artifactId>
-    </dependency>
+		<groupId>com.renker.frame</groupId>
+		<artifactId>dubbox-frame-dubbo-api</artifactId>
+	</dependency>
   </dependencies>
 </project>
