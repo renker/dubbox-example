@@ -11,7 +11,7 @@
     
     <appender name="FILE"
         class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>D:\spring-boot-dubbo-web-manage.log</File>
+        <File>D:\dubbox-example-clinet-side.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
             <FileNamePattern>blog_%d{yyyy-MM-dd}_%i.log</FileNamePattern>
             <MinIndex>1</MinIndex>
