@@ -1,11 +1,16 @@
 package com.renker.example.person.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.renker.common.mvc.Page;
+import com.renker.example.person.condition.PersonCondition;
 import com.renker.example.person.mapper.PersonMapper;
 import com.renker.example.person.model.Person;
 
@@ -38,5 +43,15 @@ public class PersonServiceImpl implements IPersonService{
 
 	public Person login(String account, String password) {
 		return personMapper.findByAccountAndPassword(account, password);
+	}
+
+	public Page<Person> listPage(Page<Person> page,PersonCondition condition) {
+		int num = personMapper.listPageCount(condition);
+		if(num > 0){
+			List<Person> list = personMapper.listPage(condition, new RowBounds(page.getCurrentPageIndex(), page.getPageSize()));
+			page.setAllRecord(num);
+			page.setResults(list);
+		}
+		return page;
 	}
 }

@@ -118,6 +118,11 @@
 		<artifactId>dubbox-example-server-api</artifactId>
 	</dependency>
 	
+	<dependency>
+		<groupId>com.renker</groupId>
+		<artifactId>dubbox-example-common</artifactId>
+	</dependency>
+	
    	<dependency>
 		<groupId>com.renker.frame</groupId>
 		<artifactId>dubbox-frame-data-redis</artifactId>

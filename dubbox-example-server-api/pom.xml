@@ -12,5 +12,10 @@
 		<groupId>com.renker.frame</groupId>
 		<artifactId>dubbox-frame-dubbo-api</artifactId>
 	</dependency>
+	
+	<dependency>
+		<groupId>com.renker</groupId>
+    	<artifactId>dubbox-example-common</artifactId>
+	</dependency>
   </dependencies>
 </project>

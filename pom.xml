@@ -15,6 +15,7 @@
   	<module>dubbox-example-server-side</module>
   	<module>dubbox-example-client-side</module>
   	<module>dubbox-example-server-api</module>
+  	<module>dubbox-example-common</module>
   </modules>
   
   
@@ -43,6 +44,12 @@
   		<dependency>
   			<groupId>com.renker</groupId>
   			<artifactId>dubbox-example-client-side</artifactId>
+  			<version>${dubbox.example.version}</version>
+  		</dependency>
+  		
+  		<dependency>
+  			<groupId>com.renker</groupId>
+  			<artifactId>dubbox-example-common</artifactId>
   			<version>${dubbox.example.version}</version>
   		</dependency>
   		

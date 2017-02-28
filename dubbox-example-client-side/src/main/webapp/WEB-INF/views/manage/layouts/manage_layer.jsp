@@ -5,8 +5,12 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<title><sitemesh:write property='title' />-管理平台</title>
-	<link rel="stylesheet" type="text/css" href="${ctx }/static/lib/manage/css/style.default.css">
+	
+	
+	<%-- <link rel="stylesheet" type="text/css" href="${ctx }/static/lib/manage/css/style.default.css">
 	<link rel="stylesheet" type="text/css" href="${ctx }/static/lib/jquery.datatables/css/jquery.datatables.css">
 	
 	<script type="text/javascript" src="${ctx }/static/lib/jquery-1.11.1.min.js"></script>
@@ -21,9 +25,15 @@
 	<script type="text/javascript" src="${ctx }/static/lib/manage/js/toggles.min.js"></script>
 	<script type="text/javascript" src="${ctx }/static/lib/manage/js/retina.min.js"></script>
 	<script type="text/javascript" src="${ctx }/static/lib/manage/js/select2.min.js"></script>
-	<script type="text/javascript" src="${ctx }/static/lib/manage/js/custom.js"></script>
-	<sitemesh:write property='head' />
+	<script type="text/javascript" src="${ctx }/static/lib/manage/js/custom.js"></script> --%>
 	
+	
+	<!-- bootstrap & fontawesome -->
+	<link rel="stylesheet" href="${ctx }/static/lib/ace/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="${ctx }/static/lib/ace/font-awesome/4.5.0/css/font-awesome.min.css" />
+	
+	
+	<sitemesh:write property='head' />
 	<style type="text/css">
 		.mainpanel{min-height: 400px!important;}
 	</style>
@@ -32,6 +42,5 @@
 	<div class="mainpanel">
 		<sitemesh:write property='body' />
 	</div>
-	
 </body>
 </html>
