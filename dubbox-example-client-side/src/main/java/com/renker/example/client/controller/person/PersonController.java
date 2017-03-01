@@ -24,13 +24,13 @@ public class PersonController extends BaseController{
 	@Reference(group="example")
 	private IPersonService personService;
 	
-	@RequestMapping(value="index",method=RequestMethod.GET)
+	@RequestMapping(value="index",method=RequestMethod.GET,name="用户管理_首页")
 	// @RequiresPermissions("person:list")
 	public String index(){
 		return "manage/person/person_index";
 	}
 	
-	@RequestMapping(value="list",method=RequestMethod.POST)
+	@RequestMapping(value="list",method=RequestMethod.POST,name="用户管理_首页_加载分页数据")
 	@ResponseBody
 	public Page<Person> list(Page<Person> page,PersonCondition condition){
 		page = personService.listPage(page, condition);
@@ -43,7 +43,7 @@ public class PersonController extends BaseController{
 	}
 	
 	@RequiresPermissions("person.toCreate")
-	@RequestMapping(value="doCreate",method=RequestMethod.POST)
+	@RequestMapping(value="doCreate",method=RequestMethod.POST,name="用户管理_新增")
 	@ResponseBody
 	public AjaxResult doAdd(Person person){
 		try {

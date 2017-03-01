@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("manage/resource")
 @Controller
 public class ResourceController {
-	@RequestMapping("index")
+	@RequestMapping(value="index",name="资源首页")
 	public String index(){
 		
 		return "manage/resource/resource_index";

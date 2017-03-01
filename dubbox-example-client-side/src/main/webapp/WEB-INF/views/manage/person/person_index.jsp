@@ -13,7 +13,23 @@
 </head>
 <body>
 	<div class="page-content">
-	
+		<div class="row">
+			<form class="form-horizontal">
+				<div class="col-xs-12">
+					<input type="text" placeholder="账号" >
+					<input type="text" placeholder="开始时间" >
+					<input type="text" placeholder="结束时间" >
+					<input type="text" placeholder="状态" >
+					<select style="">
+						<option>请选择状态</option>
+						<option>正常</option>
+						<option>禁止</option>
+					</select>
+					<button type="button" class="btn btn-sm btn-primary">查询</button>
+				</div>
+			</form>
+		</div>
+		<div class="space-4"></div>
 		<div class="row">
 			<div class="col-xs-12">
 			<div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">

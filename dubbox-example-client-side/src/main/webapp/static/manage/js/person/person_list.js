@@ -12,7 +12,7 @@ $(function(){
 	});
 	
 	var tablea = $('#table1').DataTable({
-		dom:"tlip",
+		dom:"trlip",
 		order:[],
 		"stripeClasses": [ 'strip1', 'strip2'],
 		"serverSide":true,
@@ -44,7 +44,15 @@ $(function(){
 			{data:"loginErrorAllowNum"},
 			{data:"loginErrorNum"},
 			{orderable:false,render:function(data, type, row){
-				return '<i title="编辑" class="fa fa-pencil" style="cursor: pointer;margin: 0px 5px;"></i><i title="删除" class="fa fa-times" style="cursor: pointer;margin: 0px 5px;"></i>';
+				var div_start = '<div class="action-buttons">';
+				
+				var view = '<a class="blue" title="查看" href="#"> <i class="ace-icon fa fa-search-plus bigger-130"></i> </a>';
+				var edit = '<a class="green" title="编辑" href="#"> <i class="ace-icon fa fa-pencil bigger-130"></i> </a>';
+				var del = '<a class="red" title="删除" href="#"> <i class="ace-icon fa fa-trash-o bigger-130"></i> </a>';
+				
+				var div_end='</div>';
+				return div_start+view+edit+del+div_end;
+				/*return '<i title="编辑" class="fa fa-pencil bigger-130" style="cursor: pointer;margin: 0px 5px;"></i><i title="删除" class="fa fa-times bigger-130" style="cursor: pointer;margin: 0px 5px;"></i>';*/
 			}}
 		],
 		"language":{url:ctx+"/static/lib/jquery.datatables/lang/zh_CN.json"}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.renker.example.person.mapper.ResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.renker.example.person.model.Resource" >
+    <id column="tb_id" property="id" jdbcType="VARCHAR" />
+    <result column="tb_resource" property="resource" jdbcType="VARCHAR" />
+    <result column="tb_pattern" property="pattern" jdbcType="VARCHAR" />
+    <result column="tb_classpath" property="classpath" jdbcType="VARCHAR" />
+    <result column="tb_status" property="status" jdbcType="INTEGER" />
+    <result column="tb_create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tb.id as tb_id, tb.resource as tb_resource, tb.pattern as tb_pattern, tb.classpath as tb_classpath, 
+    tb.status as tb_status, tb.create_time as tb_create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from blog_resource tb
+    where tb.id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from blog_resource
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.renker.example.person.model.Resource" >
+    insert into blog_resource (id, resource, pattern, 
+      classpath, status, create_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{resource,jdbcType=VARCHAR}, #{pattern,jdbcType=VARCHAR}, 
+      #{classpath,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.renker.example.person.model.Resource" >
+    insert into blog_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="resource != null" >
+        resource,
+      </if>
+      <if test="pattern != null" >
+        pattern,
+      </if>
+      <if test="classpath != null" >
+        classpath,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="resource != null" >
+        #{resource,jdbcType=VARCHAR},
+      </if>
+      <if test="pattern != null" >
+        #{pattern,jdbcType=VARCHAR},
+      </if>
+      <if test="classpath != null" >
+        #{classpath,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.renker.example.person.model.Resource" >
+    update blog_resource
+    <set >
+      <if test="resource != null" >
+        resource = #{resource,jdbcType=VARCHAR},
+      </if>
+      <if test="pattern != null" >
+        pattern = #{pattern,jdbcType=VARCHAR},
+      </if>
+      <if test="classpath != null" >
+        classpath = #{classpath,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.renker.example.person.model.Resource" >
+    update blog_resource
+    set resource = #{resource,jdbcType=VARCHAR},
+      pattern = #{pattern,jdbcType=VARCHAR},
+      classpath = #{classpath,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,3 +1,24 @@
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus,
+.paginate_button:focus,
+.paginate_button:active:focus,
+.paginate_button.active:focus,
+.paginate_button.focus,
+.paginate_button:active.focus,
+.paginate_button.active.focus,
+.fa:focus,
+.fa:active:focus,
+.fa.active:focus,
+.fa.focus,
+.fa:active.focus,
+.fa.active.focus{
+    outline: none;          
+}
+
 .main-content,body,html {
 	min-height:100%
 }
