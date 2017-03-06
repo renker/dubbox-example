@@ -30,6 +30,8 @@ public class AdminRealm extends AuthorizingRealm{
 		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 		simpleAuthorizationInfo.addRole("admin");
 		simpleAuthorizationInfo.addStringPermission("person.toCreate");
+		simpleAuthorizationInfo.addStringPermission("person.toEdit.*");
+		simpleAuthorizationInfo.addStringPermission("person.toEdit");
 		return simpleAuthorizationInfo;
 	}
 

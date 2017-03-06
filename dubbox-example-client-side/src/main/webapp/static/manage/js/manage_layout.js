@@ -1,0 +1,40 @@
+var COOKIE_MENU_INDEX="_COOKIE_MENU_INDEX";
+var _index = 0;
+$(function(){
+	menu();
+});
+
+function menu(){
+	
+	var _local_path = window.location.pathname;
+	
+	if($.cookie(COOKIE_MENU_INDEX) == null){
+		_index = 0;
+		$.cookie(COOKIE_MENU_INDEX,_index,{path:_local_path});
+	}else{
+		_index = $.cookie(COOKIE_MENU_INDEX);
+	}
+	
+	var _$li = $(".nav-list a").eq(_index).parent("li");
+	_$li.addClass("active");
+	menuShow(_$li);
+	
+	$(".nav-list a").on("click",function(){
+		if($(this).attr("href")!="#"){
+			var _target_path = $(this).attr("href");
+			_index = $(".nav-list a").index(this);
+			$.cookie(COOKIE_MENU_INDEX,_index,{path:_target_path});
+		}
+	});
+}
+
+function menuShow(_$li){
+	if(_$li.parent("ul").hasClass("submenu")){
+		_$li.parent("ul").addClass("nav-show");
+		_$li.parent("ul").parent("li").addClass("open");
+		_$li.parent("ul").parent("li").addClass("active");
+		_$li.parent("ul").show();
+		
+		//menuShow(_$li.parent("ul").parent("li"));
+	}
+}

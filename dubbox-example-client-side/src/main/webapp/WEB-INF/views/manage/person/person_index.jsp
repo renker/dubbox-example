@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %> 
 <c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -26,6 +27,7 @@
 						<option>禁止</option>
 					</select>
 					<button type="button" class="btn btn-sm btn-primary">查询</button>
+					<button id="createBtn" type="button" class="btn btn-sm btn-primary">新增</button>
 				</div>
 			</form>
 		</div>

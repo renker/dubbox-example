@@ -1,6 +1,7 @@
 $(function(){
 	$("#createBtn").click(function(){
-		layer.open({
+		window.location.href=ctx+'/manage/person/toCreate';
+		/*layer.open({
 		      type: 2,
 		      title: '新增用户',
 		      shadeClose: true,
@@ -8,7 +9,7 @@ $(function(){
 		      maxmin: true, //开启最大化最小化按钮
 		      area: ['893px', '600px'],
 		      content: ctx+'/manage/person/toCreate/layer'
-		    });
+		    });*/
 	});
 	
 	var tablea = $('#table1').DataTable({

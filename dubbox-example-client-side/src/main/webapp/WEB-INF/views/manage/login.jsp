@@ -9,6 +9,13 @@
 	<link rel="stylesheet" type="text/css" href="${ctx }/static/manage/css/login.css">
 	<script type="text/javascript" src="${ctx }/static/lib/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="${ctx }/static/lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+	<script src="${ctx }/static/lib/jquery.cookies.js"></script>
+	
+	<script type="text/javascript">
+		$(function(){
+			$.cookie("_COOKIE_MENU_INDEX",null);
+		});
+	</script>
   </head>
   
   <body>

@@ -18,7 +18,7 @@
 	<!-- page specific plugin styles -->
 
 	<!-- text fonts -->
-	<link rel="stylesheet" href="${ctx }/static/lib/ace/css/fonts.googleapis.com.css" />
+	<%-- <link rel="stylesheet" href="${ctx }/static/lib/ace/css/fonts.googleapis.com.css" /> --%>
 
 	<!-- ace styles -->
 	<%-- <link rel="stylesheet" href="${ctx }/static/lib/ace/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" /> --%>
@@ -47,6 +47,8 @@
 	<script src="${ctx }/static/lib/ace/js/ace-extra.min.js"></script>
 	
 	<script src="${ctx }/static/lib/jquery-1.11.1.min.js"></script>
+	<script src="${ctx }/static/lib/jquery.cookies.js"></script>
+	
 	
 	<%-- 支持mobile --%>
 	<script type="text/javascript">
@@ -79,6 +81,8 @@
 	
 	<link rel="stylesheet" href="${ctx }/static/lib/jquery.datatables/css/jquery.datatables.css" />
 	<script src="${ctx }/static/lib/jquery.datatables/jquery.datatables.min.js"></script>
+	
+	<script src="${ctx }/static/lib/layer/layer.js"></script>
 
 	<sitemesh:write property='head' />
 </head>
@@ -391,7 +395,7 @@
 							<li class="divider"></li>
 
 							<li>
-								<a href="#">
+								<a href="${ctx }/manage/loginOut">
 									<i class="ace-icon fa fa-power-off"></i>
 									Logout
 								</a>
@@ -445,7 +449,7 @@
 
 			<%-- 菜单列表 ____________________________________________start --%>
 			<ul class="nav nav-list">
-				<li class="active">
+				<li class="">
 					<a href="${ctx }/manage/home">
 						<i class="menu-icon fa fa-home"></i>
 						<span class="menu-text"> HOME </span>
@@ -493,7 +497,7 @@
 						<li class="">
 							<a href="${ctx }/manage/resource/index">
 								<i class="menu-icon fa fa-caret-right"></i>
-								资源管理
+								权限管理
 							</a>
 							<b class="arrow"></b>
 						</li>
