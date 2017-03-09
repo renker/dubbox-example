@@ -15,11 +15,12 @@ function tableInit(){
 		"stripeClasses": [ 'strip1', 'strip2'],
 		"serverSide":true,
 		"ajax":function(data, callback, settings){
-			var param = {page:1,pageSize:data.length};
+			console.log(data);
+			var param = {page:data.start/data.length+1,pageSize:data.length};
 			$.post(ctx+"/manage/resource/list",param,function(page){
 				var returnData = {};
-				returnData.recordsTotal=page.allRecord;
-				returnData.recordsFiltered=page.allRecord;
+				returnData.recordsTotal=page.totalCount;
+				returnData.recordsFiltered=page.totalCount;
 				returnData.data = page.results;
 				callback(returnData);
 			});

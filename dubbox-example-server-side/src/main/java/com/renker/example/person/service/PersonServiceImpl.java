@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import com.renker.common.mvc.Page;
 import com.renker.example.person.condition.PersonCondition;
 import com.renker.example.person.mapper.PersonMapper;
@@ -46,12 +47,7 @@ public class PersonServiceImpl implements IPersonService{
 	}
 
 	public Page<Person> listPage(Page<Person> page,PersonCondition condition) {
-		int num = personMapper.listPageCount(condition);
-		if(num > 0){
-			List<Person> list = personMapper.listPage(condition, new RowBounds(page.getCurrentPageIndex(), page.getPageSize()));
-			page.setAllRecord(num);
-			page.setResults(list);
-		}
-		return page;
+			PageList<Person> list = (PageList<Person>) personMapper.listPage(condition, page.toPageBounds());
+		return page.load(list);
 	}
 }

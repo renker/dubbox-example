@@ -3,31 +3,24 @@ package com.renker.common.mvc;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 public class Page<T> implements Serializable{
 	private static final long serialVersionUID = 1L;
 	/* 当前页数  */
-	private Integer currentPage = 1;
+	private Integer page = 1;
 	/* 第页显示条数 */
 	private Integer pageSize = 10;
 	/* 总页数 */
-	private Integer allPage = 0;
+	private Integer totalPages = 0;
 	/* 总记录条数 */
-	private Integer allRecord = 0;
+	private Integer totalCount = 0;
 	/* 结果集 */
 	private List<T> results = new ArrayList<T>();
-	/* 以什么字段排序 */
-	private String field;
-	/* 排序规则  "asc"or"desc" */
-	private String rule;
 	
 	public Page() {
 		super();
-	}
-	public Integer getCurrentPage() {
-		return currentPage;
-	}
-	public void setCurrentPage(Integer currentPage) {
-		this.currentPage = currentPage;
 	}
 	public Integer getPageSize() {
 		return pageSize;
@@ -35,39 +28,47 @@ public class Page<T> implements Serializable{
 	public void setPageSize(Integer pageSize) {
 		this.pageSize = pageSize;
 	}
-	public Integer getAllPage() {
-		return (int)Math.ceil(Double.parseDouble(allRecord.toString())/pageSize);
-	}
-	public void setAllPage(Integer allPage) {
-		this.allPage = allPage;
-	}
-	public Integer getAllRecord() {
-		return allRecord;
-	}
-	public void setAllRecord(Integer allRecord) {
-		this.allRecord = allRecord;
-	}
 	public List<T> getResults() {
 		return results;
 	}
 	public void setResults(List<T> results) {
 		this.results = results;
 	}
-	public String getField() {
-		return field;
+	
+	public Integer getPage() {
+		return page;
 	}
-	public void setField(String field) {
-		this.field = field;
-	}
-	public String getRule() {
-		return rule;
-	}
-	public void setRule(String rule) {
-		this.rule = rule;
+	public void setPage(Integer page) {
+		this.page = page;
 	}
 	
-	public int getCurrentPageIndex(){
-		return this.currentPage >0?(this.currentPage-1)*this.pageSize:0;
+	public Integer getTotalPages() {
+		return (int)Math.ceil(Double.parseDouble(totalCount.toString())/pageSize);
+	}
+	public void setTotalPages(Integer totalPages) {
+		this.totalPages = totalPages;
+	}
+	public Integer getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(Integer totalCount) {
+		this.totalCount = totalCount;
+	}
+	public int getPageIndex(){
+		return this.page >0?(this.page-1)*this.pageSize:0;
+	}
+	
+	public PageBounds toPageBounds(){
+		return new PageBounds(this.page, this.pageSize);
+	}
+	
+	public Page<T> load(PageList<T> pageLIst){
+		Page<T> result = new Page<T>();
+		result.setResults(pageLIst);
+		result.setPage(pageLIst.getPaginator().getPage());
+		result.setTotalCount(pageLIst.getPaginator().getTotalCount());
+		result.setPageSize(pageLIst.getPaginator().getLimit());
+		return result;
 	}
 	
 }

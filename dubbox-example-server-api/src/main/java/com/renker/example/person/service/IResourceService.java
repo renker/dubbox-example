@@ -18,5 +18,5 @@ public interface IResourceService {
 
     int updateByPrimaryKey(Resource record);
     
-    Page<Resource> listPage(PageBounds pageBounds);
+    Page<Resource> listPage(Page<Resource> page);
 }

@@ -36,8 +36,8 @@ public class ResourceController extends BaseController{
 	
 	@RequestMapping(value="list",name="资源_列表_加载数据")
 	@ResponseBody
-	public Page<Resource> list(Integer page,Integer pageSize){
-		Page<Resource> pageList = resourceService.listPage(new PageBounds(page, pageSize));
+	public Page<Resource> list(Page<Resource> page){
+		Page<Resource> pageList = resourceService.listPage(page);
 		return pageList;
 	}
 	
