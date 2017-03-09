@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.miemiedev.mybatis.paginator.domain.Order;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 public class Page<T> implements Serializable{
@@ -19,6 +20,17 @@ public class Page<T> implements Serializable{
 	/* 结果集 */
 	private List<T> results = new ArrayList<T>();
 	
+	/**
+	 * 排序 例如 name.asc,age.desc
+	 */
+	private String orders;
+	
+	public String getOrders() {
+		return orders;
+	}
+	public void setOrders(String orders) {
+		this.orders = orders;
+	}
 	public Page() {
 		super();
 	}
@@ -59,7 +71,12 @@ public class Page<T> implements Serializable{
 	}
 	
 	public PageBounds toPageBounds(){
-		return new PageBounds(this.page, this.pageSize);
+		if(this.orders != null && !this.orders.equals("")){
+			return new PageBounds(this.page, this.pageSize,Order.formString(this.orders));
+		}else{
+			return new PageBounds(this.page, this.pageSize);
+		}
+		
 	}
 	
 	public Page<T> load(PageList<T> pageLIst){
