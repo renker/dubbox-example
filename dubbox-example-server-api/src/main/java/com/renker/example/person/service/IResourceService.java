@@ -1,5 +1,8 @@
 package com.renker.example.person.service;
 
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import com.renker.common.mvc.Page;
 import com.renker.example.person.model.Resource;
 
 public interface IResourceService {
@@ -14,4 +17,6 @@ public interface IResourceService {
     int updateByPrimaryKeySelective(Resource record);
 
     int updateByPrimaryKey(Resource record);
+    
+    Page<Resource> listPage(PageBounds pageBounds);
 }

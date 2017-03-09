@@ -1,6 +1,8 @@
 package com.renker.example.client.spring;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.BeansException;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.renker.common.utils.PatternUtil;
+import com.renker.example.person.model.Resource;
 
 @Component
 public class SpringContextUtil implements ApplicationContextAware{
@@ -20,7 +23,8 @@ public class SpringContextUtil implements ApplicationContextAware{
 		this.applicationContext = applicationContext;
 	}
 	
-	public void autoScanResource(){
+	public List<Resource> autoScanResource(){
+		List<Resource> list = new  ArrayList<Resource>();
 		Map<String, Object> beans = applicationContext.getBeansWithAnnotation(Controller.class);
 		for (String key : beans.keySet()) {
 			Object bean = beans.get(key);
@@ -37,15 +41,25 @@ public class SpringContextUtil implements ApplicationContextAware{
 						if(mrmVal != null && mrmVal.length>0){
 							String url = ((vrmVal != null && vrmVal.length>0) ?vrmVal[0]:"")+"/"+mrmVal[0];
 							
-							String resourceKey = PatternUtil.resourceKey(url);
-							String resourcePattern = PatternUtil.resourcePattern(url);
+							String pattern = PatternUtil.resourceKey(url);
+							String exurl = PatternUtil.resourcePattern(url);
 							
-							System.out.println(resourceKey+"\t"+resourcePattern);
+							System.out.println(pattern+"\t"+exurl+"\t"+bean.getClass().getName()+"\t"+method.getName());
+							
+							Resource res = new Resource();
+							res.setClasspath(bean.getClass().getName());
+							res.setMethod(method.getName());
+							res.setPattern(pattern);
+							res.setUrl(exurl);
+							res.setRemark(mrm.name());
+							list.add(res);
 						}
 					}
 				}
 			}
 		}
+		
+		return list;
 	}
 
 }

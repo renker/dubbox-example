@@ -18,7 +18,7 @@
 	<!-- page specific plugin styles -->
 
 	<!-- text fonts -->
-	<%-- <link rel="stylesheet" href="${ctx }/static/lib/ace/css/fonts.googleapis.com.css" /> --%>
+	<link rel="stylesheet" href="${ctx }/static/lib/ace/css/fonts.googleapis.com.css" />
 
 	<!-- ace styles -->
 	<%-- <link rel="stylesheet" href="${ctx }/static/lib/ace/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" /> --%>

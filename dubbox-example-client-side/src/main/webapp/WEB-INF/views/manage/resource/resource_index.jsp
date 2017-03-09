@@ -6,26 +6,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>资源管理</title>
+<script type="text/javascript">var ctx = '${ctx}';</script>
+<script type="text/javascript" src="${ctx}/static/manage/js/person/resource_index.js"></script>
 </head>
 <body>
 	<div class="page-content">
-	
+		<div class="row">
+			<div class="col-xs-12">
+				<button id="scanBtn" type="button" class="btn btn-sm btn-primary">自动扫描</button>
+			</div>
+		</div>
+		<div class="space-4"></div>
 		<div class="row">
 			<div class="col-xs-12">
 			<div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
 				<div class="table-responsive">
-					<table class="table table-striped table-bordered table-hover dataTable no-footer" id="table1">
+					<table id="table" class="table table-striped table-bordered table-hover dataTable no-footer" >
 						<thead>
 							<tr>
 								<th>
 									<label class="pos-rel">
 										<input type="checkbox" class="ace" />
-										<span class="lbl">全选</span>
+										<span class="lbl"></span>
 									</label>
 								</th>
-			                    <th>资源路径</th>
-			                    <th>资源字符串</th>
-			                    <th>状态</th>
+			                    <th>URL(备注)</th>
+			                    <th>资源</th>
+			                    <th>创建日期</th>
 			                    <th>操作</th>
 							</tr>
 		              	</thead>

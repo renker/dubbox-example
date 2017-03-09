@@ -3,15 +3,17 @@
 <mapper namespace="com.renker.example.person.mapper.ResourceMapper" >
   <resultMap id="BaseResultMap" type="com.renker.example.person.model.Resource" >
     <id column="tb_id" property="id" jdbcType="VARCHAR" />
-    <result column="tb_resource" property="resource" jdbcType="VARCHAR" />
-    <result column="tb_pattern" property="pattern" jdbcType="VARCHAR" />
     <result column="tb_classpath" property="classpath" jdbcType="VARCHAR" />
+    <result column="tb_method" property="method" jdbcType="VARCHAR" />
+    <result column="tb_url" property="url" jdbcType="VARCHAR" />
+    <result column="tb_pattern" property="pattern" jdbcType="VARCHAR" />
     <result column="tb_status" property="status" jdbcType="INTEGER" />
+    <result column="tb_remark" property="remark" jdbcType="VARCHAR" />
     <result column="tb_create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    tb.id as tb_id, tb.resource as tb_resource, tb.pattern as tb_pattern, tb.classpath as tb_classpath, 
-    tb.status as tb_status, tb.create_time as tb_create_time
+    tb.id as tb_id, tb.classpath as tb_classpath, tb.method as tb_method, tb.url as tb_url, 
+    tb.pattern as tb_pattern, tb.status as tb_status, tb.remark as tb_remark, tb.create_time as tb_create_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -24,12 +26,12 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.renker.example.person.model.Resource" >
-    insert into blog_resource (id, resource, pattern, 
-      classpath, status, create_time
-      )
-    values (#{id,jdbcType=VARCHAR}, #{resource,jdbcType=VARCHAR}, #{pattern,jdbcType=VARCHAR}, 
-      #{classpath,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
-      )
+    insert into blog_resource (id, classpath, method, 
+      url, pattern, status, 
+      remark, create_time)
+    values (#{id,jdbcType=VARCHAR}, #{classpath,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{pattern,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.renker.example.person.model.Resource" >
     insert into blog_resource
@@ -37,17 +39,23 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="resource != null" >
-        resource,
+      <if test="classpath != null" >
+        classpath,
+      </if>
+      <if test="method != null" >
+        method,
+      </if>
+      <if test="url != null" >
+        url,
       </if>
       <if test="pattern != null" >
         pattern,
       </if>
-      <if test="classpath != null" >
-        classpath,
-      </if>
       <if test="status != null" >
         status,
+      </if>
+      <if test="remark != null" >
+        remark,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -57,17 +65,23 @@
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="resource != null" >
-        #{resource,jdbcType=VARCHAR},
+      <if test="classpath != null" >
+        #{classpath,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
       </if>
       <if test="pattern != null" >
         #{pattern,jdbcType=VARCHAR},
       </if>
-      <if test="classpath != null" >
-        #{classpath,jdbcType=VARCHAR},
-      </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
@@ -77,17 +91,23 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.renker.example.person.model.Resource" >
     update blog_resource
     <set >
-      <if test="resource != null" >
-        resource = #{resource,jdbcType=VARCHAR},
+      <if test="classpath != null" >
+        classpath = #{classpath,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
       </if>
       <if test="pattern != null" >
         pattern = #{pattern,jdbcType=VARCHAR},
       </if>
-      <if test="classpath != null" >
-        classpath = #{classpath,jdbcType=VARCHAR},
-      </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -97,11 +117,24 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.renker.example.person.model.Resource" >
     update blog_resource
-    set resource = #{resource,jdbcType=VARCHAR},
+    set classpath = #{classpath,jdbcType=VARCHAR},
+      method = #{method,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
       pattern = #{pattern,jdbcType=VARCHAR},
-      classpath = #{classpath,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  
+  
+  <select id="listPage" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" />
+    from blog_resource tb
+  </select>
+  
+  <select id="listPageCount" resultType="int">
+  	select count(*)
+    from blog_resource
+  </select>
 </mapper>

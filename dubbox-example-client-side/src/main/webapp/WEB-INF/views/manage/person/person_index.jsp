@@ -7,9 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户管理</title>
-<script type="text/javascript">
-	var ctx = '${ctx}';
-</script>
+<script type="text/javascript">var ctx = '${ctx}';</script>
 <script type="text/javascript" src="${ctx}/static/manage/js/person/person_list.js"></script>
 </head>
 <body>

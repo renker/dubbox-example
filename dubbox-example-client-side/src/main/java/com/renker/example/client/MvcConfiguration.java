@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 public class MvcConfiguration extends WebMvcConfigurerAdapter{
 	@Value(value="${spring.mvc.view.prefix}")
 	private String spring_mvc_view_prefix;
