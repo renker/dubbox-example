@@ -18,11 +18,11 @@ $(function(){
 		"stripeClasses": [ 'strip1', 'strip2'],
 		"serverSide":true,
 		"ajax":function(data, callback, settings){
-			var param = {currentPageIndex:data.start,pageSize:data.length};
+			var param = {currentPageIndex:data.start/data.length+1,pageSize:data.length};
 			$.post(ctx+"/manage/person/list",param,function(page){
 				var returnData = {};
-				returnData.recordsTotal=page.allRecord;
-				returnData.recordsFiltered=page.allRecord;
+				returnData.recordsTotal=page.totalCount;
+				returnData.recordsFiltered=page.totalCount;
 				returnData.data = page.results;
 				callback(returnData);
 			});
