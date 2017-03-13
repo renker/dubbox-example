@@ -5,7 +5,6 @@ $(function(){
 });
 
 function menu(){
-	
 	var _local_path = window.location.pathname;
 	
 	if($.cookie(COOKIE_MENU_INDEX) == null){
@@ -24,6 +23,7 @@ function menu(){
 			var _target_path = $(this).attr("href");
 			_index = $(".nav-list a").index(this);
 			$.cookie(COOKIE_MENU_INDEX,_index,{path:_target_path});
+			$.cookie(COOKIE_MENU_INDEX,_index,{path:"/"});
 		}
 	});
 }
