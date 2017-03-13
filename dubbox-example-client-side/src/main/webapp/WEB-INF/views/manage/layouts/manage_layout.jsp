@@ -495,11 +495,31 @@
 						</li>
 
 						<li class="">
-							<a href="${ctx }/manage/resource/index">
+							<a href="#" class="dropdown-toggle">
 								<i class="menu-icon fa fa-caret-right"></i>
-								权限管理
+								资源 &amp; 权限管理
+								<b class="arrow fa fa-angle-down"></b>
 							</a>
-							<b class="arrow"></b>
+							
+							
+							<ul class="submenu">
+							
+								<li class="">
+									<a href="${ctx }/manage/resource/index">
+										<i class="menu-icon fa fa-caret-right"></i>
+										资源管理
+									</a>
+									<b class="arrow"></b>
+								</li>
+								
+								<li class="">
+									<a href="${ctx }/manage/permission/index">
+										<i class="menu-icon fa fa-caret-right"></i>
+										权限管理
+									</a>
+									<b class="arrow"></b>
+								</li>
+							</ul>
 						</li>
 						
 						<li class="">

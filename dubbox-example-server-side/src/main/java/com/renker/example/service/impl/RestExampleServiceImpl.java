@@ -1,7 +1,5 @@
 package com.renker.example.service.impl;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import com.alibaba.dubbo.config.annotation.Service;
 import com.renker.example.service.IRestExampleService;
 

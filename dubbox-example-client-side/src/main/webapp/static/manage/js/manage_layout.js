@@ -20,7 +20,7 @@ function menu(){
 	menuShow(_$li);
 	
 	$(".nav-list a").on("click",function(){
-		if($(this).attr("href")!="#"){
+		if($(this).attr("href")!="#"){ // 保存当前li 索引
 			var _target_path = $(this).attr("href");
 			_index = $(".nav-list a").index(this);
 			$.cookie(COOKIE_MENU_INDEX,_index,{path:_target_path});
@@ -35,6 +35,6 @@ function menuShow(_$li){
 		_$li.parent("ul").parent("li").addClass("active");
 		_$li.parent("ul").show();
 		
-		//menuShow(_$li.parent("ul").parent("li"));
+		menuShow(_$li.parent("ul").parent("li"));
 	}
 }

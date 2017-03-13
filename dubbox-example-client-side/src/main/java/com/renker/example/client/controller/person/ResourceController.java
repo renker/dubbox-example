@@ -38,6 +38,8 @@ public class ResourceController extends BaseController{
 	@ResponseBody
 	public Page<Resource> list(Page<Resource> page){
 		Page<Resource> pageList = resourceService.listPage(page);
+		
+		
 		return pageList;
 	}
 	
@@ -52,9 +54,14 @@ public class ResourceController extends BaseController{
 		List<Resource> list  = util.autoScanResource();
 		Date currentDate = new Date();
 		for (Resource resource : list) {
-			resource.setCreateTime(currentDate);
-			resource.setStatus(1);
-			resourceService.insert(resource);
+			try {
+				resource.setCreateTime(currentDate);
+				resource.setStatus(1);
+				resourceService.insert(resource);
+			} catch (Exception e) {
+				e.printStackTrace();
+				break;
+			}
 		}
 		
 		return ajaxResult(Status.SUCCESS);
