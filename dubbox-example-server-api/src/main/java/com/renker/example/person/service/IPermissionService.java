@@ -1,5 +1,6 @@
 package com.renker.example.person.service;
 
+import com.renker.common.mvc.Page;
 import com.renker.example.person.model.Permission;
 
 public interface IPermissionService {
@@ -15,4 +16,6 @@ public interface IPermissionService {
     int updateByPrimaryKeySelective(Permission record);
 
     int updateByPrimaryKey(Permission record);
+    
+    Page<Permission> listPage(Page<Permission> page);
 }

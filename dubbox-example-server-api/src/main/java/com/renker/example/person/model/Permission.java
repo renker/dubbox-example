@@ -8,6 +8,10 @@ public class Permission implements Serializable {
 
     private String name;
 
+    private String partten;
+
+    private String type;
+
     private String remarks;
 
     private String createBy;
@@ -34,6 +38,22 @@ public class Permission implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPartten() {
+        return partten;
+    }
+
+    public void setPartten(String partten) {
+        this.partten = partten;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getRemarks() {
@@ -90,6 +110,8 @@ public class Permission implements Serializable {
         Permission other = (Permission) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+            && (this.getPartten() == null ? other.getPartten() == null : this.getPartten().equals(other.getPartten()))
+            && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
             && (this.getRemarks() == null ? other.getRemarks() == null : this.getRemarks().equals(other.getRemarks()))
             && (this.getCreateBy() == null ? other.getCreateBy() == null : this.getCreateBy().equals(other.getCreateBy()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
@@ -103,6 +125,8 @@ public class Permission implements Serializable {
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
+        result = prime * result + ((getPartten() == null) ? 0 : getPartten().hashCode());
+        result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
         result = prime * result + ((getRemarks() == null) ? 0 : getRemarks().hashCode());
         result = prime * result + ((getCreateBy() == null) ? 0 : getCreateBy().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
@@ -119,6 +143,8 @@ public class Permission implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
+        sb.append(", partten=").append(partten);
+        sb.append(", type=").append(type);
         sb.append(", remarks=").append(remarks);
         sb.append(", createBy=").append(createBy);
         sb.append(", createTime=").append(createTime);

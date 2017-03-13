@@ -1,5 +1,8 @@
 package com.renker.example.person.mapper;
 
+import java.util.List;
+
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.renker.example.person.model.Permission;
 
 public interface PermissionMapper {
@@ -14,4 +17,6 @@ public interface PermissionMapper {
     int updateByPrimaryKeySelective(Permission record);
 
     int updateByPrimaryKey(Permission record);
+    
+    List<Permission> listPage(PageBounds pageBounds);
 }

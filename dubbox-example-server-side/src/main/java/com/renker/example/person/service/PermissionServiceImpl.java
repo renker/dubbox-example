@@ -5,12 +5,14 @@ import javax.annotation.Resource;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import com.renker.common.mvc.Page;
 import com.renker.example.person.mapper.PermissionMapper;
 import com.renker.example.person.model.Permission;
 
 @Service(group="example",protocol={"dubbo"})
 @Transactional
-public class PermissionService implements IPermissionService {
+public class PermissionServiceImpl implements IPermissionService {
 	@Resource
 	private PermissionMapper permissionMapper;
 
@@ -43,6 +45,12 @@ public class PermissionService implements IPermissionService {
 	@Override
 	public int updateByPrimaryKey(Permission record) {
 		return permissionMapper.updateByPrimaryKey(record);
+	}
+
+	@Override
+	public Page<Permission> listPage(Page<Permission> page) {
+		PageList<Permission> pageLIst =  (PageList<Permission>) permissionMapper.listPage(page.toPageBounds());
+		return page.load(pageLIst);
 	}
 
 }
