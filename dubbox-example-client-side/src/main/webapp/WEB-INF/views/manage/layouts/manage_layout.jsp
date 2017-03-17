@@ -57,8 +57,6 @@
 	
 	<script src="${ctx }/static/lib/ace/js/bootstrap.min.js"></script>
 	
-	<script src="${ctx }/static/manage/js/manage_layout.js"></script>
-	
 	<!-- page specific plugin scripts -->
 
 	<!--[if lte IE 8]>
@@ -71,6 +69,7 @@
 	<script src="${ctx }/static/lib/ace/js/jquery.flot.min.js"></script>
 	<script src="${ctx }/static/lib/ace/js/jquery.flot.pie.min.js"></script>
 	<script src="${ctx }/static/lib/ace/js/jquery.flot.resize.min.js"></script>
+	
 
 	<!-- ace scripts -->
 	<script src="${ctx }/static/lib/ace/js/ace-elements.min.js"></script>
@@ -82,7 +81,12 @@
 	<link rel="stylesheet" href="${ctx }/static/lib/jquery.datatables/css/jquery.datatables.css" />
 	<script src="${ctx }/static/lib/jquery.datatables/jquery.datatables.min.js"></script>
 	
+	<script src="${ctx }/static/lib/jquery.validate.min.js"></script>
+	
 	<script src="${ctx }/static/lib/layer/layer.js"></script>
+	
+	<script src="${ctx }/static/manage/js/common_utils.js"></script>
+	<script src="${ctx }/static/manage/js/manage_layout.js"></script>
 
 	<sitemesh:write property='head' />
 </head>

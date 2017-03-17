@@ -33,7 +33,7 @@ $(function(){
 		    }},
 			{data:"account"},
 			{data:"root",render:function(data, type, row){
-				if(data.root == 1){
+				if(data){
 					return "是";
 				}else{
 					return "否";

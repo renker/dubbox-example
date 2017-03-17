@@ -50,6 +50,10 @@ public class PersonController extends BaseController{
 			person.setId(UUIDUtil.randomUUID());
 			person.setSalt(UUIDUtil.randomUUID());
 			person.setPassword(MD5Util.MD5(person.getPassword(), person.getSalt()));
+			
+			person.setRoot((person.getRoot()==null || person.getRoot()==false)?false:true);
+			person.setLoginErrorAllowNum(5);
+			person.setLoginErrorNum(0);
 			personService.insert(person);
 			return ajaxResult(Status.SUCCESS);
 		} catch (Exception e) {
