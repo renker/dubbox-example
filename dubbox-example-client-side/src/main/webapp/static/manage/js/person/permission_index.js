@@ -1,7 +1,54 @@
 $(function(){
-	table();
-	btn();
+	//table();
+	//btn();
+	
+	ztree();
 });
+
+function ztree(){
+	var setting = {
+			async:{
+				enable:true,
+				url:ctx+"/manage/permission/list",
+				type:"post",
+				dataType:"JSON"
+			},
+			data:{
+				key:{
+					name:"name"
+				},
+				simpleData:{
+					enable:true,
+					idKey:"id",
+					pIdKey:"parentId",
+					rootPid : null
+				}
+			},
+			view:{
+				addHoverDom:hoverDiyDom,
+				removeHoverDom:removeHoverDiyDom
+			}
+		};
+	$.fn.zTree.init($("#tree"),setting);
+	
+}
+function editDiyDom(treeId, treeNode){
+	
+}
+
+function hoverDiyDom(treeId, treeNode){
+	var btnId = treeNode.tId + "_a"+"_edi";
+	var areaClass = treeNode.tId + "_a"+"_area";
+	var btn = "<span class="+areaClass+"><span id="+ btnId +">编辑</span></span>";
+	var aObj = $("#" + treeNode.tId + "_a");
+	aObj.append(btn);
+	console.log("hover ...");
+}
+
+function removeHoverDiyDom(treeId, treeNode){
+	var areaId = treeNode.tId + "_a"+"_area";
+	$("."+areaId).remove();
+}
 
 function btn(){
 	$("#createBtn").click(function(){

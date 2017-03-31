@@ -1,5 +1,7 @@
 package com.renker.example.person.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -51,6 +53,11 @@ public class PermissionServiceImpl implements IPermissionService {
 	public Page<Permission> listPage(Page<Permission> page) {
 		PageList<Permission> pageLIst =  (PageList<Permission>) permissionMapper.listPage(page.toPageBounds());
 		return page.load(pageLIst);
+	}
+
+	@Override
+	public List<Permission> listAll() {
+		return permissionMapper.listAll();
 	}
 
 }

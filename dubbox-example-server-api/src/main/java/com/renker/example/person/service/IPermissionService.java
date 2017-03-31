@@ -1,5 +1,7 @@
 package com.renker.example.person.service;
 
+import java.util.List;
+
 import com.renker.common.mvc.Page;
 import com.renker.example.person.model.Permission;
 
@@ -18,4 +20,6 @@ public interface IPermissionService {
     int updateByPrimaryKey(Permission record);
     
     Page<Permission> listPage(Page<Permission> page);
+    
+    List<Permission> listAll();
 }

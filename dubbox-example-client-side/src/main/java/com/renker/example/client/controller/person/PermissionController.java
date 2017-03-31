@@ -1,5 +1,7 @@
 package com.renker.example.client.controller.person;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,9 +28,8 @@ public class PermissionController extends BaseController{
 	
 	@RequestMapping("list")
 	@ResponseBody
-	public Page<Permission> list(Page<Permission> page){
-		page = permissionService.listPage(page);
-		return page;
+	public List<Permission> list(Page<Permission> page){
+		return permissionService.listAll();
 	}
 	
 	@RequestMapping("toCreate/ignore")

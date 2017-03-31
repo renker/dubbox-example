@@ -85,6 +85,10 @@
 	
 	<script src="${ctx }/static/lib/layer/layer.js"></script>
 	
+	<%-- <link rel="stylesheet" href="${ctx }/static/lib/zTree/css/metroStyle/metroStyle.css" /> --%>
+	<link rel="stylesheet" href="${ctx }/static/lib/zTree/css/zTreeStyle/zTreeStyle.css" />
+	<script src="${ctx }/static/lib/zTree/js/jquery.ztree.all.min.js"></script>
+	
 	<script src="${ctx }/static/manage/js/common_utils.js"></script>
 	<script src="${ctx }/static/manage/js/manage_layout.js"></script>
 

@@ -18,5 +18,7 @@ public interface PermissionMapper {
 
     int updateByPrimaryKey(Permission record);
     
+    List<Permission> listAll();
+    
     List<Permission> listPage(PageBounds pageBounds);
 }

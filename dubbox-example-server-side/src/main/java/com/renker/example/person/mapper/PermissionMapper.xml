@@ -3,6 +3,7 @@
 <mapper namespace="com.renker.example.person.mapper.PermissionMapper" >
   <resultMap id="BaseResultMap" type="com.renker.example.person.model.Permission" >
     <id column="tb_id" property="id" jdbcType="VARCHAR" />
+    <result column="tb_parent_id" property="parentId" jdbcType="VARCHAR" />
     <result column="tb_name" property="name" jdbcType="VARCHAR" />
     <result column="tb_partten" property="partten" jdbcType="VARCHAR" />
     <result column="tb_type" property="type" jdbcType="VARCHAR" />
@@ -13,8 +14,8 @@
     <result column="tb_update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    tb.id as tb_id, tb.name as tb_name, tb.partten as tb_partten, tb.type as tb_type, 
-    tb.remarks as tb_remarks, tb.create_by as tb_create_by, tb.create_time as tb_create_time, 
+    tb.id as tb_id, tb.parent_id as tb_parent_id, tb.name as tb_name, tb.partten as tb_partten, 
+    tb.type as tb_type, tb.remarks as tb_remarks, tb.create_by as tb_create_by, tb.create_time as tb_create_time, 
     tb.update_by as tb_update_by, tb.update_time as tb_update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -28,20 +29,23 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.renker.example.person.model.Permission" >
-    insert into blog_permission (id, name, partten, 
-      type, remarks, create_by, 
-      create_time, update_by, update_time
-      )
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{partten,jdbcType=VARCHAR}, 
-      #{type,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    insert into blog_permission (id, parent_id, name, 
+      partten, type, remarks, 
+      create_by, create_time, update_by, 
+      update_time)
+    values (#{id,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{partten,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.renker.example.person.model.Permission" >
     insert into blog_permission
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
       </if>
       <if test="name != null" >
         name,
@@ -72,6 +76,9 @@
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
@@ -101,6 +108,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.renker.example.person.model.Permission" >
     update blog_permission
     <set >
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
@@ -130,7 +140,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.renker.example.person.model.Permission" >
     update blog_permission
-    set name = #{name,jdbcType=VARCHAR},
+    set parent_id = #{parentId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
       partten = #{partten,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
       remarks = #{remarks,jdbcType=VARCHAR},
@@ -140,10 +151,14 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-
+  
+  <select id="listAll" resultMap="BaseResultMap">
+  	select <include refid="Base_Column_List" />
+    from blog_permission tb
+  </select>
+  
   <select id="listPage" resultMap="BaseResultMap">
-  	select 
-    <include refid="Base_Column_List" />
+  	select <include refid="Base_Column_List" />
     from blog_permission tb
   </select>
 </mapper>

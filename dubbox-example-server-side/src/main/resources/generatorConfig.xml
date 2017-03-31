@@ -29,14 +29,14 @@
 		    enableSelectByExample="false" 
 		    enableUpdateByExample="false" 
 		    enableDeleteByExample="false">
-		</table>
+		</table>-->
 		
 		<table tableName="blog_permission" domainObjectName="Permission" alias="tb"
 		    enableCountByExample="false" 
 		    enableSelectByExample="false" 
 		    enableUpdateByExample="false" 
 		    enableDeleteByExample="false">
-		</table> -->
+		</table> 
 		
 		<table tableName="blog_role" domainObjectName="Role" alias="tb"
 		    enableCountByExample="false" 

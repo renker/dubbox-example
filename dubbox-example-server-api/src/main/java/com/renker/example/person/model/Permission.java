@@ -6,6 +6,8 @@ import java.util.Date;
 public class Permission implements Serializable {
     private String id;
 
+    private String parentId;
+
     private String name;
 
     private String partten;
@@ -30,6 +32,14 @@ public class Permission implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
     public String getName() {
@@ -109,6 +119,7 @@ public class Permission implements Serializable {
         }
         Permission other = (Permission) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
+            && (this.getParentId() == null ? other.getParentId() == null : this.getParentId().equals(other.getParentId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getPartten() == null ? other.getPartten() == null : this.getPartten().equals(other.getPartten()))
             && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
@@ -124,6 +135,7 @@ public class Permission implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+        result = prime * result + ((getParentId() == null) ? 0 : getParentId().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         result = prime * result + ((getPartten() == null) ? 0 : getPartten().hashCode());
         result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
@@ -142,6 +154,7 @@ public class Permission implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", parentId=").append(parentId);
         sb.append(", name=").append(name);
         sb.append(", partten=").append(partten);
         sb.append(", type=").append(type);
