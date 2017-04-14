@@ -1,9 +1,29 @@
 $(function(){
-	//table();
-	//btn();
-	
+	btn();
 	ztree();
 });
+
+function btn(){
+	/**
+	 * 新增文件夹
+	 */
+	$("#folderCreateBtn").click(function(){
+	    layer.open({
+	        type: 2,
+	        title: '新增文件夹',
+	        shadeClose: true,
+	        shade: [0.8, '#393D49'],
+	        area: ['800px', '250px'],
+	        content: ctx+'/manage/permission/toCreate/ignore?type=folder'
+	      });
+	});
+	
+	/**
+	 * 新增权限
+	 */
+	$("#permissCreateBtn").click(function(){
+	});
+}
 
 function ztree(){
 	var setting = {
@@ -11,7 +31,18 @@ function ztree(){
 				enable:true,
 				url:ctx+"/manage/permission/list",
 				type:"post",
-				dataType:"JSON"
+				dataType:"JSON",
+				autoParam:["id"],
+				dataFilter:function(treeId, parentNode, responseData){
+					for(var i=0;i<responseData.length;i++){
+						var type = responseData[i].type;
+						if(type == "folder"){
+							responseData[i].isParent=true;
+						}
+					}
+					console.log(responseData);
+					return responseData;
+				}
 			},
 			data:{
 				key:{
@@ -21,7 +52,7 @@ function ztree(){
 					enable:true,
 					idKey:"id",
 					pIdKey:"parentId",
-					rootPid : null
+					rootPid : "null"
 				}
 			},
 			view:{
@@ -30,84 +61,37 @@ function ztree(){
 			}
 		};
 	$.fn.zTree.init($("#tree"),setting);
-	
 }
-function editDiyDom(treeId, treeNode){
-	
-}
-
 function hoverDiyDom(treeId, treeNode){
-	var btnId = treeNode.tId + "_a"+"_edi";
-	var areaClass = treeNode.tId + "_a"+"_area";
-	var btn = "<span class="+areaClass+"><span id="+ btnId +">编辑</span></span>";
 	var aObj = $("#" + treeNode.tId + "_a");
-	aObj.append(btn);
-	console.log("hover ...");
+	var areaClass = treeNode.tId + "_a"+"_area";
+	if($("."+areaClass).length > 0){
+		return;
+	}else{
+		var btn = "<span class="+areaClass+">" +
+					"<span class='button add' title='新增' onclick='treeAddBtn("+treeNode.id+")'></span>" +
+					"<span class='button edit' title='修改'></span>" +
+					"<span class='button remove' title='删除'></span>" +
+				  "</span>";
+		aObj.append(btn);
+	}
 }
 
 function removeHoverDiyDom(treeId, treeNode){
-	var areaId = treeNode.tId + "_a"+"_area";
-	$("."+areaId).remove();
+	var areaClass = treeNode.tId + "_a"+"_area";
+	$("."+areaClass).remove();
 }
 
-function btn(){
-	$("#createBtn").click(function(){
-		layer.open({
-				type: 2,
-				title: '权限新增',
-				shadeClose: true,
-				shade: 0.8,
-		  area: ['800px', '320px'],
-		  content: ctx+"/manage/permission/toCreate/ignore"
+/**
+ * 添加按钮
+ * @param id
+ */
+function treeAddBtn(id){
+	layer.confirm('选择加要的节点类型', {
+		  btn: ['权限节点','文件夹节点'] //按钮
+		}, function(){
+			alert(1);
+		}, function(){
+			alert(2);
 		});
-	});
-}
-
-function table(){
-	var tablea = $('#table').DataTable({
-		dom:"trlip",
-		order:[],
-		"stripeClasses": [ 'strip1', 'strip2'],
-		"serverSide":true,
-		"ajax":function(data, callback, settings){
-			var param = {currentPageIndex:data.start/data.length+1,pageSize:data.length};
-			$.post(ctx+"/manage/permission/list",param,function(page){
-				var returnData = {};
-				returnData.recordsTotal=page.totalCount;
-				returnData.recordsFiltered=page.totalCount;
-				returnData.data = page.results;
-				callback(returnData);
-			});
-		},
-		"columns":[
-		    {data:"id",orderable:false,render:function(data, type, row){
-		    	return '<input type="checkbox" class="editor-active">';
-		    }},
-			{data:"partten"},
-			{data:"type",render:function(data, type, row){
-				if(data == "common"){
-					return "普通";
-				}else if(data == "button"){
-					return "按钮";
-				}else{
-					return "remarks";
-				}
-			}},
-			{data:"status",render:function(data, type, row){
-				return "正常";
-			}},
-			{orderable:false,render:function(data, type, row){
-				var div_start = '<div class="action-buttons">';
-				
-				var view = '<a class="blue" title="查看" href="#"> <i class="ace-icon fa fa-search-plus bigger-130"></i> </a>';
-				var edit = '<a class="green" title="编辑" href="#"> <i class="ace-icon fa fa-pencil bigger-130"></i> </a>';
-				var del = '<a class="red" title="删除" href="#"> <i class="ace-icon fa fa-trash-o bigger-130"></i> </a>';
-				
-				var div_end='</div>';
-				return div_start+view+edit+del+div_end;
-				/*return '<i title="编辑" class="fa fa-pencil bigger-130" style="cursor: pointer;margin: 0px 5px;"></i><i title="删除" class="fa fa-times bigger-130" style="cursor: pointer;margin: 0px 5px;"></i>';*/
-			}}
-		],
-		"language":{url:ctx+"/static/lib/jquery.datatables/lang/zh_CN.json"}
-	});
 }

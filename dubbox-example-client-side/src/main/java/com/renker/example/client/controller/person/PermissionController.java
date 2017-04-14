@@ -1,9 +1,13 @@
 package com.renker.example.client.controller.person;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.dubbo.config.annotation.Reference;
@@ -28,12 +32,16 @@ public class PermissionController extends BaseController{
 	
 	@RequestMapping("list")
 	@ResponseBody
-	public List<Permission> list(Page<Permission> page){
+	public List<Permission> list(Page<Permission> page,String id){
+		if(StringUtils.isNotBlank(id)){
+			return new ArrayList<Permission>();
+		}
 		return permissionService.listAll();
 	}
 	
 	@RequestMapping("toCreate/ignore")
-	public String toCreate(){
+	public String toCreate(String type,Model model){
+		model.addAttribute(type, type);
 		return "manage/person/permission_edit";
 	}
 	
